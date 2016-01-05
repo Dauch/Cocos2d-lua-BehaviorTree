@@ -31,7 +31,7 @@ function ZDLNodePrioritySelector:doEvaluate(input)
 	
 	--重头遍历子节点，有一个条件为真，执行这个。
 	--注意开始的位置优先级最高，因为每次会开始查找
-	if(self.children and #self.children > 0) then		
+	if #self.children > 0 then		
 		for i,childNode in ipairs(self.children) do
 			if childNode:evaluate(input) then
 				self.currentSelectIndex = i;

@@ -36,9 +36,9 @@ end
 
 function ZDLNodeParallel:doEvaluate(input)
 
-	if(self.children and #self.children > 0) then		
+	if #self.children > 0 then		
 		for i,childNode in ipairs(self.children) do
-			if self.mab_ChildNodeStatus[i] == 0 then
+			if self.mab_ChildNodeStatus[i] == ZDLRunningStatus.k_BRS_Executing then
 				if not childNode:evaluate(input) then
 					return false;
 				end
@@ -66,11 +66,11 @@ function ZDLNodeParallel:doTick(input,output)
 	
 		if(self.me_FinishCondition == ZDLParallelFinishCondition.k_PFC_OR) then
 		
-			if(self.mab_ChildNodeStatus[i] == 0) then
+			if(self.mab_ChildNodeStatus[i] == ZDLRunningStatus.k_BRS_Executing) then
 				self.mab_ChildNodeStatus[i] = childNode:tick(input, output);
 			end
 
-			if(self.mab_ChildNodeStatus[i] ~= 0) then
+			if(self.mab_ChildNodeStatus[i] ~= ZDLRunningStatus.k_BRS_Executing) then
 				for i=1,#self.mab_ChildNodeStatus do
 					self.mab_ChildNodeStatus[i] = ZDLRunningStatus.k_BRS_Executing;
 				end
@@ -84,7 +84,6 @@ function ZDLNodeParallel:doTick(input,output)
 			end
 
 			if(self.mab_ChildNodeStatus[i] ~= k_BRS_Executing) then
-			
 				finishedChildCount = finishedChildCount + 1;
 			end
 		end

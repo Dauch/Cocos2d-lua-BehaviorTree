@@ -40,7 +40,7 @@ function ZDLTreeNode.initBehaviorTreeParam()
 	kInfiniteLoop = -1;
 
 	--是否是调试模式
-	k_DEBUG_FLAG = GameInfo.TestAI;
+	k_DEBUG_FLAG = true;
 end
 
 --[[

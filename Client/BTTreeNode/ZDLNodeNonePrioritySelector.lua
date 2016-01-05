@@ -3,7 +3,7 @@
 -- Date: 2014-09-23 18:16:58
 -- 不带优先级的选择节点
 -- 子节点的前提，要保证“互斥”
--- 例 子1：a > 10, 子2：a >= 2 且 a <= 10, 子3：a < 2
+-- 例如 子1：a > 10, 子2：a >= 2 且 a <= 10, 子3：a < 2
 
 ZDLNodeNonePrioritySelector = class("ZDLNodeNonePrioritySelector", ZDLNodePrioritySelector)
 

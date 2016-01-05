@@ -74,7 +74,7 @@ function ZDLNodeLoop:doTick(input,output)
 		end
 	end
 
-	if (bIsFinish ~= 0) then
+	if (bIsFinish ~= ZDLRunningStatus.k_BRS_Executing) then
 		self.mi_CurrentCount = 0;
 	end
 
